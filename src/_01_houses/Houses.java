@@ -5,20 +5,30 @@ import java.awt.Color;
 import org.jointheleague.graphical.robot.Robot;
 
 public class Houses {
-	public void run(int size, String color) {
+	Robot rob = new Robot();
+	public void run() {
 		
-		Robot rob = new Robot();
-		rob.setX(0);
+		rob.setX(10);
 		rob.setY(500);
-		rob.turn(90);
+		house(200, "red");
+		house(50, "pink");
+		house(150, "yellow");
+		house(100, "green");
+		house(300, "blue");
+		house(250, "red");
+		house(100, "pink");
+		house(50, "yellow");
+		house(350, "green");
+		house(200, "blue");
+		
+}
+	void house(int height, String color) {
 		rob.penDown();
-		rob.setSpeed(50);
-	for(int i = 0; i < 10; i++) {
-		rob.setPenColor(Color.green);
-		rob.move(50);
-		rob.setAngle(0);
 		if(color.equals("red")) {
 			rob.setPenColor(Color.red);
+		}
+		else if(color.equals("pink")) {
+			rob.setPenColor(Color.pink);
 		}
 		else if(color.equals("yellow")) {
 			rob.setPenColor(Color.yellow);
@@ -29,12 +39,15 @@ public class Houses {
 		else if(color.equals("blue")) {
 			rob.setPenColor(Color.blue);
 		}
-		rob.move(size);
+		rob.setSpeed(50);
+		rob.move(height);
 		rob.setAngle(90);
-		rob.move(30);
+		rob.move(40);
 		rob.setAngle(180);
-		rob.move(size);
+		rob.move(height);
 		rob.setAngle(90);
+		rob.setPenColor(Color.green);
+		rob.move(50);
+		rob.setAngle(0);
 	}
-}
 }
