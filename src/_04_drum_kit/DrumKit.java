@@ -21,12 +21,15 @@ import javax.swing.JPanel;
 public class DrumKit implements MouseListener {
 
 	JLabel drumLabelWithImage;
+	JLabel cymbalLabelWithImage;
+	JLabel snareLabelWithImage;
 
 	public void run() throws MalformedURLException {
 
 		// 1. Make a JFrame variable and initialize it using "new JFrame()"
 		JFrame frame = new JFrame();
 		// 2. Make the frame visible and
+		frame.setVisible(true);
 		// set its default close operation to JFrame.EXIT_ON_CLOSE
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// 3. Set the size of the frame
@@ -41,9 +44,9 @@ public class DrumKit implements MouseListener {
 		// Eclipse project under "recipe package(drum_kit)".
 
 		// 8. Put the name of your image file in a String variable.
-		String image = "drums.jpeg";
+		String drum = "drums.jpeg";
 		// 9. Edit the next line to use your String variable
-		drumLabelWithImage = createLabelImage(image);
+		drumLabelWithImage = createLabelImage(drum);
 
 		// 10. Add the image to the panel
 		panel.add(drumLabelWithImage);
@@ -53,9 +56,20 @@ public class DrumKit implements MouseListener {
 		// your drum image?
 		frame.pack();
 		// 13. add this mouse listener to drumLabelWithImage
-
+		drumLabelWithImage.addMouseListener(this);
 		// 18. Add more images to make a drumkit. Remember to add this mouse
 		// listener to each one.
+		String cymbal = "cymbal.jpg";
+		cymbalLabelWithImage = createLabelImage(cymbal);
+		panel.add(cymbalLabelWithImage);
+		panel.setSize(6, 6);
+		frame.pack();
+		cymbalLabelWithImage.addMouseListener(this);
+		String snare = "snare.jpg";
+		snareLabelWithImage = createLabelImage(snare);
+		panel.add(snareLabelWithImage);
+		frame.pack();
+		snareLabelWithImage.addMouseListener(this);
 
 	}
 
@@ -72,7 +86,9 @@ public class DrumKit implements MouseListener {
 		// leagueofamazing/code4life.
 
 		// 16. If they clicked on the drumImage...
-
+		if(drumClicked == drumLabelWithImage) {
+			playSound("drumSound.wav");
+		}
 		// 17. ...use the playSound method to play a drum sound. Test to see if
 		// it works
 
