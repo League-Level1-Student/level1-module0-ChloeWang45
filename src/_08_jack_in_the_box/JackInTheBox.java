@@ -1,11 +1,13 @@
 package _08_jack_in_the_box;
 
+import java.applet.AudioClip;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JApplet;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -13,6 +15,7 @@ import javax.swing.JPanel;
 
 public class JackInTheBox implements ActionListener {
 		
+	int clicks = 0;
 	public void Surprise() {
 		JFrame frame = new JFrame();
 		JPanel panel = new JPanel();
@@ -23,7 +26,7 @@ public class JackInTheBox implements ActionListener {
 	    frame.setSize(200, 200);
 	    button.setText("Surprise");
 	    button.addActionListener(this);
-	    int clicks = 0;
+	    
 	    
 	    
 	}
@@ -56,9 +59,21 @@ public class JackInTheBox implements ActionListener {
 	          return new JLabel();
 	     }
 	}
+	private void playSound(String soundFile) {
+	     try {
+	          AudioClip sound = JApplet.newAudioClip(getClass().getResource(soundFile));
+	          sound.play();
+	     } catch (Exception e) {
+	          e.printStackTrace();
+	     }
+	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		
+		clicks++;
+		if(clicks == 5) {
+			showPicture("jackInTheBox.png");
+			playSound("homer-woohoo.wav");
+		}
 	}
 }
