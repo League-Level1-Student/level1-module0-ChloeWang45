@@ -1,17 +1,22 @@
+
 PImage pictureOfRecord;
 
 void setup(){
   
     size(600,600);
-    pictureOfRecord= loadImage("record.jpeg"); 
+    pictureOfRecord = loadImage("record.png"); 
   
 }
 
 void draw(){
   
-  image(pictureOfRecord, 0, 0);
+  int angle = 0;
   pictureOfRecord.resize(600, 600);
-  rotateImage(pictureOfRecord, 360);
+  image(pictureOfRecord, 0, 0);
+  if(mousePressed){
+    angle += 10;
+    rotateImage(pictureOfRecord, angle);
+  }
   
 }
 
