@@ -8,17 +8,18 @@ void draw(){
   
   int x = (int)random(500);
   int y = (int)random(500);
+  makeMagical();
   for(int i = 0; i < 300; i++){
     fill(#FA2121);
     noStroke();
-    ellipse(x, y, 15, 15);
+    ellipse(getWormX(i), getWormY(i), 15, 15);
   }
 }
  float frequency = .001;
     float noiseInterval = PI;
 
     void makeMagical() {
-        fill( 0, 0, 0, 10 );
+        fill( 0, 10, 20, 10 );
         rect(0, 0, width, height);
         noStroke();
     }
